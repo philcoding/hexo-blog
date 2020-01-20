@@ -31,13 +31,15 @@
     </div>
 </div>
 
-<% if (theme.banner.enable) { %>
 <script>
+    <% if (theme.banner.switchMode == 'random') { %>
+    var total = <%= theme.banner.bannerNumber %>
+    var index = Math.floor((Math.random()*total)+1)
+    <% } else if (theme.banner.switchMode == 'everyday')  { %>
+    var index = new Date().getDay()
+    <% } else { %>
+    var index = <%= theme.banner.fixedIndex %>
+    <% } %>
     // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(<%- theme.jsDelivr.url %>/medias/banner/' + new Date().getDay() + '.jpg)');
+    $('.bg-cover').css('background-image', 'url(<%- theme.jsDelivr.url %>/medias/banner/' + index + '.jpg)');
 </script>
-<% } else { %>
-<script>
-    $('.bg-cover').css('background-image', 'url(<%- theme.jsDelivr.url %>/medias/banner/0.jpg)');
-</script>
-<% } %>

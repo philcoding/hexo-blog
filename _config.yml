@@ -4,8 +4,8 @@
 
 # Site
 title: '海韵学社'
-subtitle: ''
-description: '认知学识'
+subtitle: '不断打破自我认知'
+description: '从来没有真正的绝境, 只有心灵的迷途'
 keywords: flink, bigdata
 author: Bigo Lv
 language: zh-CN
@@ -17,6 +17,9 @@ url: https://blog.lvmaohai.cn/
 root: /
 permalink: :year:month:day/:title/
 permalink_defaults:
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'
 pretty_urls:
   trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
@@ -45,12 +48,18 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
   wrap: true
   hljs: false
+
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'tomorrow'
+  line_number: false    # default false
+  custom_css:
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -94,6 +103,27 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: hexo-theme-matery
+
+search:
+  path: search.xml
+  field: post
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+
+githubEmojis:
+  enable: true
+  className: github-emoji
+  inject: true
+  styles:
+  customEmojis:
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
